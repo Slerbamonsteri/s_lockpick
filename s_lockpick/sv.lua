@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('pkrp:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 print('started resource')
 
 ESX.RegisterUsableItem('lockpick', function(source)
