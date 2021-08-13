@@ -40,7 +40,7 @@ AddEventHandler('s_lockpick:startlockpicking', function()
     if distance < 3 then
         if lockstatus == 2 then
             TriggerEvent('s_lockpick:client:openLockpick', lockpick)
-            ESX.ShowNotification('Use [W / A] and [Mouse] to pick the lock')
+            ESX.ShowNotification('Use [A / D] and [Mouse] to pick the lock')
             ExecuteCommand('e mechanic3')
             SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"),true)
             FreezeEntityPosition(PlayerPedId(), true)
