@@ -41,7 +41,11 @@ AddEventHandler('s_lockpick:startlockpicking', function()
         if lockstatus == 2 then
             TriggerEvent('s_lockpick:client:openLockpick', lockpick)
             ESX.ShowNotification('Use [A / D] and [Mouse] to pick the lock')
-            ExecuteCommand('e mechanic3')
+			ESX.Streaming.RequestAnimDict('anim@amb@clubhouse@tutorial@bkr_tut_ig3@', function()
+				TaskPlayAnim(ped, 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@', 'machinic_loop_mechandplayer', 8.0, -8.0, -1, 0, 0, false, false, false)
+			end)
+			Citizen.Wait(500)
+            --ExecuteCommand('e mechanic3')   --- dp_emote
             SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"),true)
             FreezeEntityPosition(PlayerPedId(), true)
         else
@@ -58,7 +62,10 @@ function lockpick(success)
     local veh = GetClosestVehicle(pedc.x, pedc.y, pedc.z, 3.0, 0, 71)
     if success then
         Citizen.Wait(1000)
-        ExecuteCommand("e uncuff")
+        --ExecuteCommand("e uncuff") --- dp_emote
+		ESX.Streaming.RequestAnimDict('mp_arresting', function()
+			TaskPlayAnim(ped, 'mp_arresting', 'a_uncuff', 8.0, -8.0, -1, 0, 0, false, false, false)
+		end)
         Citizen.Wait(500)
         ClearPedTasks(PlayerPedId())
         FreezeEntityPosition(PlayerPedId(), false)
